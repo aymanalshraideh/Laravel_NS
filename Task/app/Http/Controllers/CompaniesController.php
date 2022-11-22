@@ -96,12 +96,13 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        // $this->validate($request,[
 
-            "name" => "required",            
+        //     "name" => "required",            
                 
-                "logo"=>"required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100",
-                        ]);
+        //         "logo"=>"required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100",
+        //                 ]);
+        // dd($request->all());
                         $Companie=Companie::find($id);
                         $Companie->name=$request->name;
                         $Companie->email=$request->email;

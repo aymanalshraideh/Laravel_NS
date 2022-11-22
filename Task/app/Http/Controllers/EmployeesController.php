@@ -48,15 +48,15 @@ class EmployeesController extends Controller
             
             
                     ]);
-                    $Companie=new Employee();
-                    $Companie->firstName=$request->firstName;
-                    $Companie->lastName=$request->lastName;
-                    $Companie->email=$request->email;
+                    $employee=new Employee();
+                    $employee->firstName=$request->firstName;
+                    $employee->lastName=$request->lastName;
+                    $employee->email=$request->email;
                     
-                    $Companie->phone=$request->phone;
-                    $Companie->company_id=$request->company_id;
+                    $employee->phone=$request->phone;
+                    $employee->company_id=$request->company_id;
                     
-                    $Companie->save();
+                    $employee->save();
                     return redirect('emplyees')->with(['status' => 'Success Employee Added ']);
     }
 
@@ -68,7 +68,9 @@ class EmployeesController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::find($id)->get();
+        $all=Companie::all();
+        return view('singleEmployee')->with(['employee' => $employee ,'all'=>$all]);
     }
 
     /**
@@ -91,7 +93,16 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $employee= Employee::find($id);
+        $employee->firstName=$request->firstName;
+        $employee->lastName=$request->lastName;
+        $employee->email=$request->email;
+        
+        $employee->phone=$request->phone;
+        $employee->company_id=$request->company_id;
+        
+        $employee->save();
+        return redirect('emplyees')->with(['status' => 'Success Employee Edited ']);
     }
 
     /**
@@ -104,6 +115,6 @@ class EmployeesController extends Controller
     {
         $employee = Employee::find($id);
         $employee->delete();
-        return redirect('employees')->with(['status' => 'Success Employee Deleted ']);
+        return redirect('emplyees')->with(['status' => 'Success Employee Deleted ']);
     }
 }

@@ -31,4 +31,6 @@ Route::get('/emplyees', [App\Http\Controllers\EmployeesController::class, 'index
 // Route::get('/emplyees', [App\Http\Controllers\EmployeesController::class, 'create']);
 
 Route::post('/addEmployee', [App\Http\Controllers\EmployeesController::class, 'store'])->name('addEmployee');
-Route::get('deleteemployee/{id}',[App\Http\Controllers\CompaniesController::class, 'destroy'])->name('deleteemployee');
+Route::get('deleteemployee/{id}',[App\Http\Controllers\EmployeesController::class, 'destroy'])->name('deleteemployee');
+Route::get('singleEmployee/{id}',[App\Http\Controllers\EmployeesController::class, 'show'])->name('singleEmployee');
+Route::post('/editEmployee/{id}', [App\Http\Controllers\EmployeesController::class, 'update'])->name('editEmployee');

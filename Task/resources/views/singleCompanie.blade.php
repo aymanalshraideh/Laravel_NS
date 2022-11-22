@@ -17,13 +17,13 @@
             
           
           
-          @foreach ($companie as $co) :
-          <form method="post" action="{{route('editCompanie',['id'=>$co->id])}}" enctype="multipart/form-data">
+          @foreach ($companie as $co) 
+          <form method="post" action="{{route('editCompanie',['id'=>$co->id])}}">
           @csrf
 
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Companie Name </label>
-              <input type="name" class="form-control"  value="{{ $co->name }}">
+              <input type="text" name="name" class="form-control"  value="{{ $co->name }}">
             </div>
 
             <div class="mb-3">
@@ -42,8 +42,8 @@
             </div>
             
             <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-          @endforeach
+        
+          @endforeach  </form>
         </div>
       </div>
     </div>

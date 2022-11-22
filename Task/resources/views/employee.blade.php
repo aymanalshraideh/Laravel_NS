@@ -49,7 +49,7 @@
                     <div class="mb-3">
                         <label class="form-label">Companie</label>
                         <select class="form-select" aria-label="Default select example" name="company_id">
-                            <option selected>Companies</option>
+                        
                             @foreach ($all as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
@@ -105,7 +105,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allEmployees as $item) {
+                            @foreach ($allEmployees as $item) 
                                 <tr>
                                     
                                     <th >{{ $item->firstName }}</th>
@@ -115,12 +115,12 @@
                                     <th >{{ $item->name }}</th>
                                     <th>
                                     
-                                    <a href="{{route('singlecompanie',['id'=>$item->id])}}"><button type="button" class="btn btn-light  m-2">Edit</button></a>
+                                    <a href="{{route('singleEmployee',['id'=>$item->id])}}"><button type="button" class="btn btn-light  m-2">Edit</button></a>
                                     <a href="{{route('deleteemployee',['id'=>$item->id])}}">  <button type="button" class="btn btn-danger m-2">Delete</button></a>
                                     </th>
                                     
                                 </tr>
-                            }
+                            
                             @endforeach
                         </tbody>
                     </table>

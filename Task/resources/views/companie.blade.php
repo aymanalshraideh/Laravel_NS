@@ -90,7 +90,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($all as $compane) {
+    @foreach ($all as $compane) 
         <tr>
             
             <th >{{ $compane->name }}</th>
@@ -103,7 +103,7 @@
             </th>
             
         </tr>
-    }
+    
     @endforeach
    
   </tbody>
