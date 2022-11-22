@@ -72,7 +72,7 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $Companie = Companie::find($id);
+        $Companie = Companie::find($id)->get();
         return view('singleCompanie')->with(['companie' => $Companie]);
     }
 
@@ -84,7 +84,7 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        //
+    //   
     }
 
     /**
@@ -96,7 +96,26 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+
+            "name" => "required",            
+                
+                "logo"=>"required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100",
+                        ]);
+                        $Companie=Companie::find($id);
+                        $Companie->name=$request->name;
+                        $Companie->email=$request->email;
+                        if ($request->hasFile('logo')) {
+                            $file=$request->logo;
+                            $new_file=time().$file->getClientOriginalName();
+                            $file->move('images',$new_file);
+                            $Companie->logo='images/'.$new_file;
+                             }
+                        $Companie->website=$request->website;
+                        
+                        $Companie->save();
+                        return redirect('companie')->with(['status' => 'Success Companie Edited ']);
+        
     }
 
     /**

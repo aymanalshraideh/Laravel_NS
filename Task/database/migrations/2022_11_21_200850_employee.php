@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('website')->nullable();
+            $table->string('phone')->nullable();
+           
            
             $table->foreignId('company_id')
             ->constrained('companies')
